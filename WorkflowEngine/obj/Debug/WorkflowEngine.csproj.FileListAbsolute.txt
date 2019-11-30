@@ -1,0 +1,11 @@
+E:\勉強\HK1-2019\Do an ma nguon mo\DAMNM\WorkflowEngine\bin\Debug\WorkflowEngine.dll
+E:\勉強\HK1-2019\Do an ma nguon mo\DAMNM\WorkflowEngine\bin\Debug\WorkflowEngine.pdb
+E:\勉強\HK1-2019\Do an ma nguon mo\DAMNM\WorkflowEngine\bin\Debug\Newtonsoft.Json.dll
+E:\勉強\HK1-2019\Do an ma nguon mo\DAMNM\WorkflowEngine\bin\Debug\OptimaJet.Workflow.Core.dll
+E:\勉強\HK1-2019\Do an ma nguon mo\DAMNM\WorkflowEngine\bin\Debug\OptimaJet.Workflow.DbPersistence.dll
+E:\勉強\HK1-2019\Do an ma nguon mo\DAMNM\WorkflowEngine\bin\Debug\Newtonsoft.Json.xml
+E:\勉強\HK1-2019\Do an ma nguon mo\DAMNM\WorkflowEngine\bin\Debug\OptimaJet.Workflow.Core.xml
+E:\勉強\HK1-2019\Do an ma nguon mo\DAMNM\WorkflowEngine\obj\Debug\WorkflowEngine.csprojAssemblyReference.cache
+E:\勉強\HK1-2019\Do an ma nguon mo\DAMNM\WorkflowEngine\obj\Debug\WorkflowEngine.csproj.CopyComplete
+E:\勉強\HK1-2019\Do an ma nguon mo\DAMNM\WorkflowEngine\obj\Debug\WorkflowEngine.dll
+E:\勉強\HK1-2019\Do an ma nguon mo\DAMNM\WorkflowEngine\obj\Debug\WorkflowEngine.pdb

@@ -46,6 +46,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="OptimaJet.Workflow.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=3d29392dccd464d7, processorArchitecture=MSIL">
+      <HintPath>packages\WorkflowEngine.NET-Core.4.0.11\lib\net45\OptimaJet.Workflow.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="OptimaJet.Workflow.DbPersistence, Version=4.0.0.0, Culture=neutral, PublicKeyToken=3d29392dccd464d7, processorArchitecture=MSIL">
+      <HintPath>packages\WorkflowEngine.NET-ProviderForMSSQL.4.0.10\lib\net45\OptimaJet.Workflow.DbPersistence.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -120,6 +126,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\DesignerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -131,23 +138,84 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\semantic.min.css" />
+    <Content Include="Content\workflowdesigner.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\wfe.activity.png" />
+    <Content Include="Images\wfe.actors.png" />
+    <Content Include="Images\wfe.add.png" />
+    <Content Include="Images\wfe.autoarrangment.png" />
+    <Content Include="Images\wfe.clone.png" />
+    <Content Include="Images\wfe.codeactions.png" />
+    <Content Include="Images\wfe.commands.png" />
+    <Content Include="Images\wfe.context.png" />
+    <Content Include="Images\wfe.context.white.png" />
+    <Content Include="Images\wfe.copy.png" />
+    <Content Include="Images\wfe.defaultzoom.png" />
+    <Content Include="Images\wfe.delete.png" />
+    <Content Include="Images\wfe.fullscreen.png" />
+    <Content Include="Images\wfe.grid.png" />
+    <Content Include="Images\wfe.help.png" />
+    <Content Include="Images\wfe.information.png" />
+    <Content Include="Images\wfe.inline.off.png" />
+    <Content Include="Images\wfe.inline.on.png" />
+    <Content Include="Images\wfe.inline.png" />
+    <Content Include="Images\wfe.legend.png" />
+    <Content Include="Images\wfe.localization.png" />
+    <Content Include="Images\wfe.move.png" />
+    <Content Include="Images\wfe.parameters.png" />
+    <Content Include="Images\wfe.redo.png" />
+    <Content Include="Images\wfe.refresh.png" />
+    <Content Include="Images\wfe.remove.png" />
+    <Content Include="Images\wfe.settings.png" />
+    <Content Include="Images\wfe.timers.png" />
+    <Content Include="Images\wfe.transition.condition.png" />
+    <Content Include="Images\wfe.transition.direct.png" />
+    <Content Include="Images\wfe.transition.not-specified.png" />
+    <Content Include="Images\wfe.transition.otherwise.png" />
+    <Content Include="Images\wfe.transition.png" />
+    <Content Include="Images\wfe.transition.reverse.png" />
+    <Content Include="Images\wfe.transition.timer.png" />
+    <Content Include="Images\wfe.transitons2.png" />
+    <Content Include="Images\wfe.transtion.actor.png" />
+    <Content Include="Images\wfe.undo.png" />
+    <Content Include="Images\wfe.zoomin.png" />
+    <Content Include="Images\wfe.zoomout.png" />
+    <Content Include="readme.txt" />
+    <Content Include="Scripts\ace.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\ext-searchbox.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.auto-complete.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\json5.js" />
+    <Content Include="Scripts\konva.min.js" />
+    <Content Include="Scripts\mode-csharp.js" />
+    <Content Include="Scripts\mode-json.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\semantic.min.js" />
+    <Content Include="Scripts\theme-monokai.js" />
+    <Content Include="Scripts\worker-json.js" />
+    <Content Include="Scripts\workflowdesigner.min.js" />
+    <Content Include="SQL\CreatePersistenceObjects.sql" />
+    <Content Include="SQL\DropPersistenceObjects.sql" />
+    <Content Include="SQL\update_1_3_to_1_4.sql" />
+    <Content Include="SQL\update_1_4_5_to_1_5.sql" />
+    <Content Include="SQL\update_1_4_to_1_4_3.sql" />
+    <Content Include="SQL\update_1_4_to_1_4_4.sql" />
+    <Content Include="SQL\update_3_1.sql" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -162,6 +230,7 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Designer\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -179,6 +248,12 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WorkflowEngine\WorkflowEngine.csproj">
+      <Project>{3767a6ee-3465-40d2-9853-1ccfa3b6cb47}</Project>
+      <Name>WorkflowEngine</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
