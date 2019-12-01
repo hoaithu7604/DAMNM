@@ -1,5 +1,6 @@
-﻿@{
-    ViewBag.Title = "Orders Managent";
+﻿@model List<DAMNM.Model.OrderModel>
+@{
+    ViewBag.Title = "Orders Management";
 }
 
 <div class="card shadow mb-4">
@@ -8,12 +9,27 @@
             <table class="table table-bordered" id="dataTable" cellspacing="0" style="overflow: scroll">
                 <thead>
                     <tr>
-                        <th style="width:200px">Actions</th>
-                        <th>Order Id</th>                     
+                        <th>Actions</th>
+                        <th>Order Id</th>    
+                        <th>State</th>
+                        <th>Customer</th>
                     </tr>
                 </thead>
                 <tbody>
-                   
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @foreach (var command in item.Commands)
+                                {
+                                    <a href="/Home/ExecuteCommand?Id=@item.Id&commandName=@command.key"><button type="button" class="btn btn-success">@command.value</button></a>
+                                }
+                            </td>
+                            <td>@item.Id</td>    
+                            <td>@item.State</td>
+                            <th>@item.OwnerName</th>
+                        </tr>
+                    }
                 </tbody>
             </table>
         </div>

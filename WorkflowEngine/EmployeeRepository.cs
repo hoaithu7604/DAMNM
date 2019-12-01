@@ -9,6 +9,19 @@ namespace WorkflowEngine
 {
     public class EmployeeRepository: DataAccess.IEmployeeRepository
     {
+        public bool CheckRole(string Id, string role)
+        {
+            var guid = Guid.Parse(Id);
+            using (var context = new DataModelDataContext())
+            {
+                var employee = context.Employees.FirstOrDefault(e => e.Id == guid);
+                if (employee != null)
+                {
+                    return context.Roles.Any(r => r.Id == employee.RoleId && r.Name == role);
+                }
+            }
+            return false;
+        }
         public Model.Employee InsertOrUpdate(Model.Employee employee)
         {
             using (var context = new DataModelDataContext())

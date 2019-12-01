@@ -135,6 +135,7 @@
     </Compile>
     <Compile Include="Helpers\CurrentUserSettings.cs" />
     <Compile Include="Model\LoginModel.cs" />
+    <Compile Include="Model\OrderModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

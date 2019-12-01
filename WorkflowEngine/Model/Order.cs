@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace WorkflowEngine.Model
 {
-    public class Account
+    public class Order
     {
         public Guid Id { get; set; }
-        public string Username { get; set; }
-        public string password { get; set; }
-        public Guid EmployeeId { get; set; }
+        public string State { get; set; }
+        public Guid OwnerId { get; set; }
+        public string OwnerName { get; set; }
     }
 }

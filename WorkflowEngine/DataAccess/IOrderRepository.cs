@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace WorkflowEngine.DataAccess
 {
-    public interface IAccountRepository
+    public interface IOderRepository
     {
-        Guid Login(string username, string passowrd);
-        
+        Model.Order InsertOrUpdate(Model.Order order);
+        List<Model.Order> Get();
     }
 }

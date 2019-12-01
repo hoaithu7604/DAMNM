@@ -10,5 +10,7 @@ namespace WorkflowEngine.DataAccess
     {
         Model.Employee InsertOrUpdate(Model.Employee employee);
 
+        bool CheckRole(string Id, string role);
+
     }
 }
