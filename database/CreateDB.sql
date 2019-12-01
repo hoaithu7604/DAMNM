@@ -40,10 +40,11 @@ Begin
 		PRINT 'Employee CREATE TABLE'
 	END
 
-	IF NOT EXISTS (SELECT 1 FROM [INFORMATION_SCHEMA].[TABLES] WHERE [TABLE_NAME] = N'Order')
+	IF NOT EXISTS (SELECT 1 FROM [INFORMATION_SCHEMA].[TABLES] WHERE [TABLE_NAME] = N'Orders')
 	BEGIN
 		CREATE TABLE dbo.Orders (
 		  Id uniqueidentifier NOT NULL,
+		  State nvarchar(50) NOT NULL,
 		  OwnerId uniqueidentifier NULL,
 		  CONSTRAINT PK_Order PRIMARY KEY (Id),
 		  CONSTRAINT FK_Order_Customer FOREIGN KEY (OwnerId) REFERENCES dbo.Customers (Id)
@@ -68,6 +69,20 @@ Begin
 		  CONSTRAINT FK_OrderHistory_Employee FOREIGN KEY (EmployeeId) REFERENCES dbo.Employee (Id)
 		)
 		PRINT 'OrderHistory CREATE TABLE'
+	END
+
+	IF NOT EXISTS (SELECT 1 FROM [INFORMATION_SCHEMA].[TABLES] WHERE [TABLE_NAME] = N'Accounts')
+	BEGIN
+		CREATE TABLE dbo.Accounts (
+		  Id uniqueidentifier NOT NULL,
+		  Username nvarchar(100) NOT NULL,
+		  Password nvarchar(100) NOT NULL,
+		  EmployeeId uniqueidentifier NOT NULL,
+		  CONSTRAINT PK_Account PRIMARY KEY (Id),
+		  CONSTRAINT FK_Account_Employee FOREIGN KEY (EmployeeId) REFERENCES dbo.Employee (Id) ON DELETE CASCADE ON UPDATE CASCADE,
+		)
+
+		PRINT 'Accounts CREATE TABLE'
 	END
 
 	COMMIT TRANSACTION
