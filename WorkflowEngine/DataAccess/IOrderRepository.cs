@@ -11,5 +11,6 @@ namespace WorkflowEngine.DataAccess
         Model.Order InsertOrUpdate(Model.Order order);
         List<Model.Order> Get();
         void ChangeState(Guid id, string nextState, string nextStateName);
+        void UpdateOrderHistory(Guid id, string currentState, string nextState, string command, Guid? employeeId);
     }
 }

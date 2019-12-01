@@ -86,5 +86,26 @@ namespace WorkflowEngine
 
             return sb.ToString();
         }
+
+        public void UpdateOrderHistory(Guid id, string currentState, string nextState, string command, Guid? employeeId)
+        {
+            using (var context = new DataModelDataContext())
+            {
+               var historyItem = new OrderHistory
+                {
+                    Id = Guid.NewGuid(),           
+                    DestinationState = nextState,
+                    OrderId = id,
+                    InitialState = currentState
+                };
+                context.OrderHistories.InsertOnSubmit(historyItem);
+               
+                historyItem.Command = command;
+                historyItem.TransitionTime = DateTime.Now;
+                historyItem.EmployeeId = employeeId;
+
+                context.SubmitChanges();
+            }
+        }
     }
 }
