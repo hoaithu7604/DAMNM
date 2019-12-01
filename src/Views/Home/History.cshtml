@@ -1,0 +1,34 @@
+﻿@model List<WorkflowEngine.Model.OrderHistory>
+@{
+    ViewBag.Title = "Order history";
+}
+
+<div class="card shadow mb-4">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" cellspacing="0" style="overflow: scroll">
+                <thead>
+                    <tr>
+                        <th>By</th>
+                        <th>Command</th>
+                        <th>From</th>
+                        <th>To</th>
+                        <th>Transition time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td><a href="/Employee/@item.EmployeeId">@item.EmployeeName</a></td>
+                            <th>@item.Command</th>
+                            <td>@item.InitialState</td>
+                            <th>@item.DestinationState</th>
+                            <th>@item.TransitionTime</th>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

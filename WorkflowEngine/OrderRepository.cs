@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WorkflowEngine.Model;
 
 namespace WorkflowEngine
 {
@@ -86,6 +87,23 @@ namespace WorkflowEngine
 
             return sb.ToString();
         }
+        private string GetEmployeeString(Guid idendityGuid, DataModelDataContext context)
+        {
+            var employees = context.Employees.Where(e => idendityGuid == e.Id).ToList();
+
+            var sb = new StringBuilder();
+            bool isFirst = true;
+            foreach (var employee in employees)
+            {
+                if (!isFirst)
+                    sb.Append(",");
+                isFirst = false;
+
+                sb.Append(employee.Name);
+            }
+
+            return sb.ToString();
+        }
 
         public void UpdateOrderHistory(Guid id, string currentState, string nextState, string command, Guid? employeeId)
         {
@@ -105,6 +123,20 @@ namespace WorkflowEngine
                 historyItem.EmployeeId = employeeId;
 
                 context.SubmitChanges();
+            }
+        }
+
+        public List<Model.OrderHistory> GetOrderHistory(Guid id)
+        {
+            using (var context = new DataModelDataContext())
+            {
+                var result = context.OrderHistories.Where(h => h.OrderId == id).OrderBy(x=>x.Order).Select(h=>Mappings.Mapper.Map<Model.OrderHistory>(h)).ToList();
+                foreach (var history in result)
+                {
+                    if (history.EmployeeId!=null)
+                        history.EmployeeName = GetEmployeeString((Guid)history.EmployeeId, context);
+                }
+                return result;
             }
         }
     }

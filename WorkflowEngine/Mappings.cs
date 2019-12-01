@@ -20,7 +20,7 @@ namespace WorkflowEngine
                 cfg.CreateMap<WorkflowEngine.Model.Employee, Employee>();
                 cfg.CreateMap<WorkflowEngine.Model.Account, Account>();
                 cfg.CreateMap<Order, WorkflowEngine.Model.Order>();
-                cfg.CreateMap<WorkflowEngine.Model.OrderHistory, OrderHistory>();
+                cfg.CreateMap<OrderHistory,WorkflowEngine.Model.OrderHistory>();
 
             });
 

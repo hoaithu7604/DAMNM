@@ -40,13 +40,21 @@ namespace DAMNM.Controllers
 
             return View(result);
         }
-        public ActionResult ExecuteCommand(string Id,string commandName)
+       
+        public ActionResult History(Guid id)
+        {
+            if (DAMNM.Helpers.CurrentUserSettings.GetCurrentUser() == Guid.Empty)
+                return Redirect("~/Login");
+            var result = _orderRepository.GetOrderHistory(id);
+            return View(result);
+        }
+        
+        #region Workflow
+        public ActionResult ExecuteCommand(string Id, string commandName)
         {
             ExecuteCommand(Guid.Parse(Id), commandName);
             return Redirect("/Home/Index");
         }
-        #region Workflow
-
         private Model.OrderCommandModel[] GetCommands(Guid id)
         {
             var result = new List<Model.OrderCommandModel>();

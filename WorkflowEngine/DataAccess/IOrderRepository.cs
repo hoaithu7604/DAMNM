@@ -12,5 +12,6 @@ namespace WorkflowEngine.DataAccess
         List<Model.Order> Get();
         void ChangeState(Guid id, string nextState, string nextStateName);
         void UpdateOrderHistory(Guid id, string currentState, string nextState, string command, Guid? employeeId);
+        List<Model.OrderHistory> GetOrderHistory(Guid id);
     }
 }
