@@ -1,9 +1,10 @@
+DELETE FROM OrderHistory
 DELETE FROM Employee
 DELETE FROM Roles
-DELETE FROM OrderHistory
 DELETE FROM Orders
 DELETE FROM Customers
 DELETE FROM dbo.WorkflowScheme
+DELETE FROM [dbo].[WorkflowProcessInstance]
 
 Begin TRANSACTION
 	INSERT dbo.Roles(Id, Name) VALUES ('69cb579b-0866-4585-aca8-efe9ef0ce2be','Manager')
@@ -218,6 +219,7 @@ return repository.CheckRole(identityId,parameter);]]></ActionCode>
     <Localize Type="State" IsDefault="True" Culture="en-US" ObjectName="ReadyForDelivery" Value="Ready for delivery" />
     <Localize Type="State" IsDefault="True" Culture="en-US" ObjectName="OrderFinished" Value="Finished" />
     <Localize Type="State" IsDefault="True" Culture="en-US" ObjectName="OrderCanceled" Value="Canceled" />
+    <Localize Type="State" IsDefault="True" Culture="en-US" ObjectName="OrderDelivering" Value="Order delivering" />
   </Localization>
 </Process>
 '')')
