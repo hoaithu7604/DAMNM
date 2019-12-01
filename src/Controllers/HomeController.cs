@@ -32,10 +32,11 @@ namespace DAMNM.Controllers
             {
                 Id = x.Id,
                 State = x.State,
+                StateName=x.StateName,
                 OwnerName = x.OwnerName,
                 OwnerId = x.OwnerId,
                 Commands = GetCommands(x.Id),
-            }).Where(x=>x.Commands.Length>0).ToList();
+            }).ToList();//Where(x=>x.Commands.Length>0)
 
             return View(result);
         }

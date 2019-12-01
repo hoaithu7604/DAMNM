@@ -45,6 +45,7 @@ Begin
 		CREATE TABLE dbo.Orders (
 		  Id uniqueidentifier NOT NULL,
 		  State nvarchar(50) NOT NULL,
+		  StateName nvarchar(50) NULL,
 		  OwnerId uniqueidentifier NULL,
 		  CONSTRAINT PK_Order PRIMARY KEY (Id),
 		  CONSTRAINT FK_Order_Customer FOREIGN KEY (OwnerId) REFERENCES dbo.Customers (Id)
@@ -81,7 +82,6 @@ Begin
 		  CONSTRAINT PK_Account PRIMARY KEY (Id),
 		  CONSTRAINT FK_Account_Employee FOREIGN KEY (EmployeeId) REFERENCES dbo.Employee (Id) ON DELETE CASCADE ON UPDATE CASCADE,
 		)
-
 		PRINT 'Accounts CREATE TABLE'
 	END
 

@@ -10,5 +10,6 @@ namespace WorkflowEngine.DataAccess
     {
         Model.Order InsertOrUpdate(Model.Order order);
         List<Model.Order> Get();
+        void ChangeState(Guid id, string nextState, string nextStateName);
     }
 }

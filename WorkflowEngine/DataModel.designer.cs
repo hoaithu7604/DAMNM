@@ -1085,6 +1085,8 @@ namespace WorkflowEngine
 		
 		private string _State;
 		
+		private string _StateName;
+		
 		private System.Nullable<System.Guid> _OwnerId;
 		
 		private EntitySet<OrderHistory> _OrderHistories;
@@ -1099,6 +1101,8 @@ namespace WorkflowEngine
     partial void OnIdChanged();
     partial void OnStateChanging(string value);
     partial void OnStateChanged();
+    partial void OnStateNameChanging(string value);
+    partial void OnStateNameChanged();
     partial void OnOwnerIdChanging(System.Nullable<System.Guid> value);
     partial void OnOwnerIdChanged();
     #endregion
@@ -1146,6 +1150,26 @@ namespace WorkflowEngine
 					this._State = value;
 					this.SendPropertyChanged("State");
 					this.OnStateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StateName", DbType="NVarChar(50)")]
+		public string StateName
+		{
+			get
+			{
+				return this._StateName;
+			}
+			set
+			{
+				if ((this._StateName != value))
+				{
+					this.OnStateNameChanging(value);
+					this.SendPropertyChanging();
+					this._StateName = value;
+					this.SendPropertyChanged("StateName");
+					this.OnStateNameChanged();
 				}
 			}
 		}

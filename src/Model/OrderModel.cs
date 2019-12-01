@@ -9,6 +9,7 @@ namespace DAMNM.Model
     {
         public Guid Id { get; set; }
         public string State { get; set; }
+        public string StateName { get; set; }
         public Guid OwnerId { get; set; }
         public string OwnerName { get; set; }
 

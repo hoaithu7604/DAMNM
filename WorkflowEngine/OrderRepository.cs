@@ -8,6 +8,26 @@ namespace WorkflowEngine
 {
     public class OrderRepository: DataAccess.IOderRepository
     {
+        private Order Get(Guid id, DataModelDataContext context)
+        {
+            var order = context.Orders.FirstOrDefault(c => c.Id == id);
+
+            if (order == null) return null;
+            return order;
+        }
+        public void ChangeState(Guid id, string nextState, string nextStateName)
+        {
+            using (var context = new DataModelDataContext())
+            {
+                var order = Get(id, context);
+                if (order == null)
+                    return;
+
+                order.State = nextState;
+                order.StateName = nextStateName;
+                context.SubmitChanges();
+            }
+        }
         public Model.Order InsertOrUpdate(Model.Order order)
         {
             using (var context = new DataModelDataContext())
@@ -26,6 +46,7 @@ namespace WorkflowEngine
                     {
                         Id = Guid.NewGuid(),
                         State = "ManagerApproving",
+                        StateName = "Manager approving",
                     };
                     context.Orders.InsertOnSubmit(target);
                 }

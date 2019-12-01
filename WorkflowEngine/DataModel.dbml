@@ -52,6 +52,7 @@
     <Type Name="Order">
       <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="State" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="StateName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="OwnerId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
       <Association Name="Order_OrderHistory" Member="OrderHistories" ThisKey="Id" OtherKey="OrderId" Type="OrderHistory" />
       <Association Name="Customer_Order" Member="Customer" ThisKey="OwnerId" OtherKey="Id" Type="Customer" IsForeignKey="true" />

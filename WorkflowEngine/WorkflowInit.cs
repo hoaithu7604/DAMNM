@@ -2,6 +2,7 @@
 using System.Xml.Linq;
 using OptimaJet.Workflow.Core.Builder;
 using OptimaJet.Workflow.Core.Bus;
+using OptimaJet.Workflow.Core.Persistence;
 using OptimaJet.Workflow.Core.Runtime;
 using OptimaJet.Workflow.DbPersistence;
 namespace WorkflowEngine
@@ -36,7 +37,36 @@ namespace WorkflowEngine
             runtime.ProcessStatusChanged += (sender, args) => { };
             runtime.Start();
 
+            runtime.ProcessStatusChanged += _runtime_ProcessStatusChanged;
+
             return runtime;
+        }
+
+        static void _runtime_ProcessStatusChanged(object sender, ProcessStatusChangedEventArgs e)
+        {
+            if (e.NewStatus != ProcessStatus.Idled && e.NewStatus != ProcessStatus.Finalized)
+                return;
+
+            if (string.IsNullOrEmpty(e.SchemeCode))
+                return;
+
+            
+            Runtime.PreExecuteFromCurrentActivity(e.ProcessId);
+
+            //Change state name
+            if (!e.IsSubprocess)
+            {
+                var nextState = e.ProcessInstance.CurrentState;
+                if (nextState == null)
+                {
+                    nextState = e.ProcessInstance.CurrentActivityName;
+                }
+                var nextStateName = Runtime.GetLocalizedStateName(e.ProcessId, nextState);
+               
+                var orderRepository = new OrderRepository();
+              
+                orderRepository.ChangeState(e.ProcessId, nextState, nextStateName);                            
+            }
         }
     }
 }
