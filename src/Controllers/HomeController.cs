@@ -18,12 +18,8 @@ namespace DAMNM.Controllers
         }
         public ActionResult Index()
         {
-            var temp = new Employee()
-            {
-                Name = "Testing",
-            };
-            _employeeRepository.InsertOrUpdate(temp);
-
+            if (DAMNM.Helpers.CurrentUserSettings.GetCurrentUser() == Guid.Empty)
+                return Redirect("~/Login");
             return View();
         }
 

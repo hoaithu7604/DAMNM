@@ -1,0 +1,23 @@
+﻿@model DAMNM.Model.LoginModel
+@{
+    ViewBag.Title = "Login";
+}
+
+@using (Html.BeginForm("Login", "Login", FormMethod.Post, new { @class = "login-form" }))
+{
+    <div class="col-11 d-flex justify-content-center" style="margin-top:10px">
+        <div class="col-11 form-row w-100">
+            <div class="w-100">@Html.LabelFor(model => model.Username)</div>
+            <div class="w-100">@Html.TextBoxFor(model => model.Username, new { @class = "form-control" })</div>
+        </div>
+    </div>
+    <div class="col-11 d-flex justify-content-center" style="margin-top:10px">
+        <div class="col-11 form-row w-100">
+            <div class="w-100">@Html.LabelFor(model => model.Password)</div>
+            <div class="w-100">@Html.TextBoxFor(model => model.Password, new { @type = "password", @class = "form-control" })</div>
+        </div>
+    </div>
+    <div class="form-row" style="margin-top:10px;margin-bottom:10px">
+        <input type="submit" value="Log In" class="btn btn-dark" style="margin:auto" />
+    </div>
+}

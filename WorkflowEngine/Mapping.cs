@@ -20,6 +20,7 @@ namespace WorkflowEngine
                 var config = new MapperConfiguration(cfg => {
 
                     cfg.CreateMap<WorkflowEngine.Model.Employee, Employee>();
+                    cfg.CreateMap<WorkflowEngine.Model.Account, Account>();
               
                 });
 
