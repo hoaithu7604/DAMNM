@@ -51,7 +51,7 @@ namespace WorkflowEngine
                     };
                     context.Orders.InsertOnSubmit(target);
                 }
-                
+                target.OwnerId = order.OwnerId;
                 context.SubmitChanges();
 
                 order.Id = target.Id;

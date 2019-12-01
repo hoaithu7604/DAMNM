@@ -48,7 +48,16 @@ namespace DAMNM.Controllers
             var result = _orderRepository.GetOrderHistory(id);
             return View(result);
         }
-        
+        public ActionResult CreateDummyOrder()
+        {
+            var order = new WorkflowEngine.Model.Order()
+            {
+                OwnerId = Guid.Parse("E0FCA1E6-B6EA-44B1-AF68-8E63E125A6BF"),
+            };
+            _orderRepository.InsertOrUpdate(order);
+            return Content("Order created");
+        }
+
         #region Workflow
         public ActionResult ExecuteCommand(string Id, string commandName)
         {
