@@ -52,7 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SQL\WorkflowInit.cs" />
+    <Compile Include="WorkflowInit.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
